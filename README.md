@@ -16,7 +16,7 @@ STEM knowledge sharing platform
 
 3. Start the server
    ```shell
-   node app
+   node server
    ```
 
    
