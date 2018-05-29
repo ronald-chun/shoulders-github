@@ -1,0 +1,35 @@
+{
+  "name": "shoulders",
+  "description": "",
+  "main": "server.js",
+  "authors": [
+    "cheungka ho <cheungkaho@cheungkadeMacBook-Air.local>"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "postinstall": "bower install",
+  "dependencies": {
+    "jquery": "^3.3.1",
+    "boostrap": "^4.1.1",
+    "hammerjs": "hammer#^2.0.8",
+    "modernizer": "^2.8.2",
+    "slick": "*",
+    "wow": "^1.1.2",
+    "waypoints": "^4.0.1",
+    "imagesloaded": "^4.1.4",
+    "isotope-layout": "isotope#^3.0.6",
+    "jquery.counterup": "^2.1.0",
+    "magnific-popup": "^1.1.0",
+    "mixitup": "^3.3.0",
+    "jquery.scrollUp": "^1.0.0",
+    "fontawesome": "^5.0.13"
+  }
+}
