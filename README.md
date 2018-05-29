@@ -12,7 +12,7 @@ STEM knowledge sharing platform
 
 2. Add .env file with port (eg. 2000)
 
-   ```json
+   ```
    PORT = 2000
    ```
 
@@ -23,3 +23,4 @@ STEM knowledge sharing platform
    ```
 
    
+
