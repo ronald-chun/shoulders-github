@@ -1,11 +1,12 @@
 const http = require('http');
 const app = require('./app');
-const process = require('dotenv').config()
-//create a server object:
-const server = http.createServer(app);
+const normalizePort = require('normalize-port');
+const port = normalizePort(process.env.PORT || '3000');
 
-server.listen(process.parsed.PORT||"2000",function(){
-    console.log('server start running at '+process.parsed.PORT||"2000");
+app.set('port', port)
+
+http.createServer(app).listen(port, function() {
+	console.log('Server start running at port' + port);
 });
 
 

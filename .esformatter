@@ -1,0 +1,20 @@
+{
+  "root": true,
+  "indent": {
+    "value": "\t",
+    "FunctionExpression": 1,
+    "ArrayExpression": 1,
+    "ObjectExpression": 1
+  },
+  "lineBreak": {
+    "before": {
+      "FunctionDeclaration": ">=1",
+      "FunctionDeclarationOpeningBrace": 0,
+      "FunctionDeclarationClosingBrace": 1
+    },
+    "after": {
+      "FunctionDeclaration": ">=1",
+      "FunctionDeclarationOpeningBrace": 1
+    }
+  }
+}
