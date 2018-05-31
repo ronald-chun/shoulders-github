@@ -125,11 +125,15 @@ app.use(function(err, req, res, next) {
 // });
 
 // nomarl router
+var site_config = {
+	title: "Shoulders",
+};
 
 app.get('/', (req, res) => {
-	res.render('index');
+	res.render('index', {
+		site_config: site_config,
+	});
 });
-
 
 // catch 404 and forward to error handler
 
@@ -157,4 +161,4 @@ app.use((err, req, res, next) => {
 
 });
 
-module.exports = app
+module.exports = app;
