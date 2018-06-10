@@ -72,7 +72,7 @@ body.home1
                                             i.fa.fa-facebook
                             | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
                             a.apply-btn(href='#') 註冊
-                            span  | 
+                            span  |
                             a.apply-btn(href='#') 登入
         | &#x9;
         header#rs-header.rs-header
@@ -109,11 +109,11 @@ body.home1
                                     | Menu
                                 nav.rs-menu
                                     ul.nav-menu
-                                        li.current-menu-item.current_page_item
+                                        li(class={'current-menu-item':  current_menu_item == "home"})
                                             a.home(href='/') 主頁
-                                        li
+                                        li(class={'current_page_item':  current_menu_item == "about-us"})
                                             a(href='#') 關於 Shoulders
-                                        li.menu-item-has-children
+                                        li.menu-item-has-children(class={'current-menu-item':  current_menu_item == "category"})
                                             a(href='#') 分類
                                             ul.sub-menu
                                                 li

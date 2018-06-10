@@ -130,11 +130,13 @@ var site_config = {
 
 app.get('/', (req, res) => {
     res.locals.title = "Shoulders";
+    res.locals.current_menu_item = "home";
     res.render('index');
 });
 
 app.get('/category/:categroy', (req, res) => {
     res.locals.title = "Shoulders";
+    res.locals.current_menu_item = "category";
 
     var categories = {
         mathematics: {'zh': '數學', 'en': 'Mathematics'},
