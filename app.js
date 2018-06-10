@@ -15,14 +15,14 @@ var multipartMiddleware = multipart();
 var app = express();
 var csrf = require('csurf');
 var csrfProtection = csrf({
-	cookie: true
+    cookie: true
 })
 // get config
 
 // view engine setup
 app.set('views', [
-	path.join(__dirname, 'public/views'),
-	path.join(__dirname, 'component'),
+    path.join(__dirname, 'public/views'),
+    path.join(__dirname, 'component'),
 ]);
 
 app.set('view engine', 'jade');
@@ -34,12 +34,12 @@ app.use(logger('dev'));
 
 // Initialize sessions
 app.use(bodyParser.json({
-	parameterLimit: '10000'
+    parameterLimit: '10000'
 }));
 
 app.use(bodyParser.urlencoded({
-	extended: true,
-	parameterLimit: '10000'
+    extended: true,
+    parameterLimit: '10000'
 }));
 
 app.use(helmet());
@@ -48,8 +48,8 @@ app.set('trust proxy', 1)
 
 app.use(cookieParser('24fd.g;'));
 app.use(cookieSession({
-	name: 'session',
-	keys: ['eqewqjr', 'kf3.f'],
+    name: 'session',
+    keys: ['eqewqjr', 'kf3.f'],
 }));
 
 
@@ -60,25 +60,25 @@ app.use(contextService.middleware('request'));
 
 // basic routing
 app.use(timeout(30000));
-app.use(function(req, res, next) {
-	if (!req.timedout) next();
+app.use(function (req, res, next) {
+    if (!req.timedout) next();
 });
 
 // pass layout setting to all pages
-app.use(function(req, res, next) {
-	// if (utility.isRequestWebPage(req) {
-	// 	res.locals.title = process.env.TITLE;
-	// 	res.locals.subtitle = process.env.SUBTITLE;
-	// }    
-	if (req.url.substr(-1) == '/' && req.url.length > 1) {
-		res.redirect(301, req.url.slice(0, -1));
-	} else {
-		next();
-	}
+app.use(function (req, res, next) {
+    // if (utility.isRequestWebPage(req) {
+    // 	res.locals.title = process.env.TITLE;
+    // 	res.locals.subtitle = process.env.SUBTITLE;
+    // }
+    if (req.url.substr(-1) == '/' && req.url.length > 1) {
+        res.redirect(301, req.url.slice(0, -1));
+    } else {
+        next();
+    }
 });
 
-app.use(multipartMiddleware, function(req, res, next) {
-	next()
+app.use(multipartMiddleware, function (req, res, next) {
+    next()
 })
 
 // app.use(function(req, res, next) {
@@ -97,13 +97,13 @@ app.use(multipartMiddleware, function(req, res, next) {
 // });
 
 app.use(csrf());
-app.use(function(err, req, res, next) {
-	if (err.code !== 'EBADCSRFTOKEN') {
+app.use(function (err, req, res, next) {
+    if (err.code !== 'EBADCSRFTOKEN') {
 
-		next(err)
-	} else {
-		next(err);
-	}
+        next(err)
+    } else {
+        next(err);
+    }
 // handle CSRF token errors here 
 })
 // XSS
@@ -125,38 +125,54 @@ app.use(function(err, req, res, next) {
 
 // nomarl router
 var site_config = {
-	title: "Shoulders",
+    title: "Shoulders",
 };
 
 app.get('/', (req, res) => {
-	res.locals.title = "Shoulders";
-	res.render('index');
+    res.locals.title = "Shoulders";
+    res.render('index');
+});
+
+app.get('/category/:categroy', (req, res) => {
+    res.locals.title = "Shoulders";
+
+    var categories = {
+        mathematics: {'zh': '數學', 'en': 'Mathematics'},
+        science: {'zh': '科學', 'en': 'Science'},
+        robot: {'zh': '機械人', 'en': 'Robot'},
+        diy: {'zh': '動手做', 'en': 'DIY'},
+    };
+
+    var category = req.params.categroy;
+    res.locals.category_name = categories[category]['zh'];
+    res.render('category-individual');
 });
 
 // catch 404 and forward to error handler
 
 app.use((req, res, next) => {
-	console.log('not found: ', req.url);
-	const err = new Error('Not Found');
-	err.status = 404;
-	next(err);
+    console.log('not found: ', req.url);
+    const err = new Error('Not Found');
+    err.status = 404;
+    next(err);
 });
 
 // error handler
 app.use((err, req, res, next) => {
-	try {
-		if (req.app.get('env') === 'development') {
-			console.log('error handler:', err);
-		}
+    try {
+        if (req.app.get('env') === 'development') {
+            console.log('error handler:', err);
+        }
 
-		res.locals.message = err.message;
-		res.locals.error = err ;
+        res.locals.message = err.message;
+        res.locals.error = err;
 
-		// console.log(req.app.get('env'));
-		// render the error page
-		res.send(err.message)
-		console.log(err)
-	} catch (ex) {}
+        // console.log(req.app.get('env'));
+        // render the error page
+        res.send(err.message)
+        console.log(err)
+    } catch (ex) {
+    }
 
 });
 
