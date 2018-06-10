@@ -1,0 +1,543 @@
+extends ./_layout.jade
+
+block content
+  // Full width header End
+  // Breadcrumbs Start
+  .rs-breadcrumbs.bg7.breadcrumbs-overlay
+    .breadcrumbs-inner
+      .container
+        .row
+          .col-md-12.text-center
+            h1.page-title Business Management
+            | &#x9;&#x9;
+            ul
+              li
+                a.active(href='index.html') Home
+              | &#x9;&#x9;
+              li Business Management
+  // Breadcrumbs End
+  // Courses Details Start
+  .rs-courses-details.pt-100.pb-70
+    .container
+      .row.mb-30
+        .col-lg-8.col-md-12
+          .detail-img
+            img(src='images/courses/courses-details.jpg', alt='Courses Images')
+                          .course-seats.price
+              | $50.0
+            |                 &#x9;
+            .course-seats
+              | 170
+              span SEATS
+                      .row
+            .col-md-8
+              ul.course-meta-style
+                li.author
+                  .image
+                    img(src='images/teachers/2.jpg', width='60', alt='')
+                                      .author-name
+                    a(href='#') Alex Hilfisher
+                    p Teacher
+                li.categories
+                  a.course-name(href='#') Spoken English
+                  p Categories
+                li
+                  | 4 Reviews
+                  .client-rating
+                    i.fa.fa-star(aria-hidden='true')
+                    i.fa.fa-star(aria-hidden='true')
+                    i.fa.fa-star(aria-hidden='true')
+                    i.fa.fa-star(aria-hidden='true')
+                    i.fa.fa-star(aria-hidden='true')
+            .col-md-4
+              .btn-area
+                a(href='#') Enroll This Course
+          .row
+            .col-md-12
+              .course-des-tabs
+                .tab-btm
+                  // Nav tabs
+                  .tabs-wrapper
+                    ul.nav.classic-tabs.tabs-cyan(role='tablist')
+                      li.nav-item
+                        a.nav-link.waves-light.active(data-toggle='tab', href='#panel51', role='tab') Description
+                      li.nav-item
+                        a.nav-link.waves-light(data-toggle='tab', href='#curriculum', role='tab') Curriculum
+                      li.nav-item
+                        a.nav-link.waves-light(data-toggle='tab', href='#instructors', role='tab') Instructors
+                      li.nav-item
+                        a.nav-link.waves-light(data-toggle='tab', href='#review', role='tab') Review
+                // Tab panels
+                .tab-content.card
+                  // Panel 1
+                  #panel51.tab-pane.fade.in.active.show(role='tabpanel')
+                    h4.desc-title Course Details
+                    p
+                      | Donec lorem leo, gravida ut cursus et, ultrices non tortor. Duis vel venenatis ligula. Etiam hendrerit at urna ac tempus. Integer sagittis luctus tellus, eu molestie magna volutpat quis. Praesent ullamcorper faucibus quam. Nam sed facilisis neque. Etiam dictum dolor et volutpat malesuada. Aliquam molestie felis in justo feugiat semper. In magna arcu, luctus a nisl et, mollis ultricies sem. Etiam cursus mi eget tellus ultrices fermentum. Vestibulum tempor erat ac eros egestas rutrum.
+                    p
+                      | Aliquam pulvinar blandit eros, vel tempor tellus eleifend eget. Vestibulum ultricies egestas ante, eu consectetur leo pretium vel. Aliquam mollis dolor libero, ac sagittis velit dignissim at. Nulla a tellus eu enim porta posuere. Sed posuere at lectus ac fringilla.
+                    h4.desc-title Requirements
+                    ul.requirements-list
+                      li Lorem ipsum dolor sit elit
+                      li Sed posuere at lectus ac fringilla
+                      li Aliquam mollis dolor libero
+                      li Sagittis velit dignissim
+                      li Aliquam mollis dolor libero
+                      li Lorem ipsum dolor sit elit
+                      li consectetur adipisicing elit
+                      li Lorem consectetur adipisicing elit
+                      li pariatur. Tempora, placeat ratione
+                      li Lorem consectetur adipisicing elit
+                      li Nihil odit magnam minima
+                      li Lorem ipsum dolor sit elit
+                  // /.Panel 1
+                  // Panel 2
+                  #curriculum.tab-pane.fade(role='tabpanel')
+                    .course-syllabus
+                      h4.desc-title SECTION 1 : INTRODUCTION
+                      #accordion.rs-accordion-style1
+                        .card
+                          #headingOne.card-header
+                            h3.acdn-title(data-toggle='collapse', data-target='#collapseOne', aria-expanded='true', aria-controls='collapseOne')
+                              strong Lessons  1:
+                              span Computer Science And Engineering
+                          #collapseOne.collapse.show(aria-labelledby='headingOne', data-parent='#accordion')
+                            .card-body
+                              | There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form,
+                        .card
+                          #headingTwo.card-header
+                            h3.acdn-title.collapsed(data-toggle='collapse', data-target='#collapseTwo', aria-expanded='false', aria-controls='collapseTwo')
+                              strong Lessons  2:
+                              span Business Management
+                          #collapseTwo.collapse(aria-labelledby='headingTwo', data-parent='#accordion')
+                            .card-body
+                              | There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don&apos;t look even slightly believable.
+                        .card
+                          #headingThree.card-header.mb-0
+                            h3.acdn-title.collapsed(data-toggle='collapse', data-target='#collapseThree', aria-expanded='false', aria-controls='collapseThree')
+                              strong Lessons  3:
+                              span Civil Engineering
+                          #collapseThree.collapse(aria-labelledby='headingThree', data-parent='#accordion')
+                            .card-body
+                              | There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don&apos;t look even slightly believable.
+                      h4.desc-title.mt-30 SECTION 2 : COMPUTER SCIENCE AND ENGINEERING
+                      #accordiontTwo.rs-accordion-style1
+                        .card
+                          #headingFour.card-header
+                            h3.acdn-title.collapsed(data-toggle='collapse', data-target='#collapseFour', aria-expanded='false', aria-controls='collapseTwo')
+                              strong Lessons  4:
+                              span Business Management
+                          #collapseFour.collapse(aria-labelledby='headingFour', data-parent='#accordiontTwo')
+                            .card-body
+                              | There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don&apos;t look even slightly believable.
+                        .card
+                          #headingFive.card-header
+                            h3.acdn-title.collapsed(data-toggle='collapse', data-target='#collapseFive', aria-expanded='false', aria-controls='collapseTwo')
+                              strong Lessons  5:
+                              span Business Management
+                          #collapseFive.collapse(aria-labelledby='headingFive', data-parent='#accordiontTwo')
+                            .card-body
+                              | There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don&apos;t look even slightly believable.
+                        .card
+                          #headingSix.card-header
+                            h3.acdn-title.collapsed(data-toggle='collapse', data-target='#collapseSix', aria-expanded='false', aria-controls='collapseThree')
+                              strong Lessons 6:
+                              span Civil Engineering
+                          #collapseSix.collapse(aria-labelledby='headingSix', data-parent='#accordiontTwo')
+                            .card-body
+                              | There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don&apos;t look even slightly believable.
+                        .card
+                          #headingSeven.card-header
+                            h3.acdn-title.collapsed(data-toggle='collapse', data-target='#collapseSeven', aria-expanded='false', aria-controls='collapseThree')
+                              strong Lessons 7:
+                              span Diploma Electrical
+                          #collapseSeven.collapse(aria-labelledby='headingSeven', data-parent='#accordiontTwo')
+                            .card-body
+                              | There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don&apos;t look even slightly believable.
+                        .card
+                          #headingEight.card-header
+                            h3.acdn-title.collapsed(data-toggle='collapse', data-target='#collapseEight', aria-expanded='false', aria-controls='collapseThree')
+                              strong Lessons 8:
+                              span Bachelor of Arts
+                          #collapseEight.collapse(aria-labelledby='headingEight', data-parent='#accordiontTwo')
+                            .card-body
+                              | There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don&apos;t look even slightly believable.
+                  // /.Panel 2
+                  // Panel 3
+                  #instructors.tab-pane.fade(role='tabpanel')
+                    .instructor-list
+                      .image
+                        img(src='images/teachers/2.jpg', width='150', alt='')
+                      .author-name
+                        a(href='#')
+                          h4 John Doe
+                        span Professor
+                        .social-icon
+                          ul
+                            li
+                              a(href='#')
+                                i.fa.fa-facebook
+                            li
+                              a(href='#')
+                                i.fa.fa-google-plus
+                            li
+                              a(href='#')
+                                i.fa.fa-twitter
+                            li
+                              a(href='#')
+                                i.fa.fa-pinterest-p
+                            li
+                              a(href='#')
+                                i.fa.fa-vimeo
+                      p.dsc
+                        | There are many variations of passages of Lorem Ipsum available, but the majority have suffered altera tion in some form, by injected humour, or randomised words which don&apos;t look even slightly believable. If you are going to use a passage of Lorem Ipsum
+                    .instructor-list.pt-45
+                      .image
+                        img(src='images/teachers/9.jpg', width='150', alt='')
+                      .author-name
+                        a(href='#')
+                          h4 Nuhan Freddy
+                        span Bachelor
+                        .social-icon
+                          ul
+                            li
+                              a(href='#')
+                                i.fa.fa-facebook
+                            li
+                              a(href='#')
+                                i.fa.fa-google-plus
+                            li
+                              a(href='#')
+                                i.fa.fa-twitter
+                            li
+                              a(href='#')
+                                i.fa.fa-pinterest-p
+                            li
+                              a(href='#')
+                                i.fa.fa-vimeo
+                      p.dsc
+                        | There are many variations of passages of Lorem Ipsum available, but the majority have suffered altera tion in some form, by injected humour, or randomised words which don&apos;t look even slightly believable. If you are going to use a passage of Lorem Ipsum
+                    .instructor-list.pt-45
+                      .image
+                        img(src='images/teachers/6.jpg', width='150', alt='')
+                      .author-name
+                        a(href='#')
+                          h4 Naila Naime
+                        span Bachelor
+                        .social-icon
+                          ul
+                            li
+                              a(href='#')
+                                i.fa.fa-facebook
+                            li
+                              a(href='#')
+                                i.fa.fa-google-plus
+                            li
+                              a(href='#')
+                                i.fa.fa-twitter
+                            li
+                              a(href='#')
+                                i.fa.fa-pinterest-p
+                            li
+                              a(href='#')
+                                i.fa.fa-vimeo
+                      p.dsc
+                        | There are many variations of passages of Lorem Ipsum available, but the majority have suffered altera tion in some form, by injected humour, or randomised words which don&apos;t look even slightly believable. If you are going to use a passage of Lorem Ipsum
+                  // /.Panel 3
+                  // Panel 4
+                  #review.tab-pane.fade(role='tabpanel')
+                    h4.desc-title Reviews
+                    .instructor-list
+                      .image
+                        img(src='images/teachers/8.jpg', width='150', alt='')
+                      .author-name
+                        .client-rating
+                          i.fa.fa-star(aria-hidden='true')
+                          i.fa.fa-star(aria-hidden='true')
+                          i.fa.fa-star(aria-hidden='true')
+                          i.fa.fa-star(aria-hidden='true')
+                          i.fa.fa-star(aria-hidden='true')
+                        a(href='#')
+                          h4 Jesika Helan
+                        span Bachelor
+                        p
+                          | There are many variations of passages of Lorem Ipsum available, but the majority have suffered altera tion in some form, by injected humour
+                    .instructor-list.mt-15
+                      .image
+                        img(src='images/teachers/7.jpg', width='150', alt='')
+                      .author-name
+                        .client-rating
+                          i.fa.fa-star(aria-hidden='true')
+                          i.fa.fa-star(aria-hidden='true')
+                          i.fa.fa-star(aria-hidden='true')
+                          i.fa.fa-star(aria-hidden='true')
+                          i.fa.fa-star(aria-hidden='true')
+                        a(href='#')
+                          h4 Alex Hilfisher
+                        span Bachelor
+                        p
+                          | There are many variations of passages of Lorem Ipsum available, but the majority have suffered altera tion in some form, by injected humour
+                    .instructor-list.mt-15
+                      .image
+                        img(src='images/teachers/4.jpg', width='150', alt='')
+                      .author-name
+                        .client-rating
+                          i.fa.fa-star(aria-hidden='true')
+                          i.fa.fa-star(aria-hidden='true')
+                          i.fa.fa-star(aria-hidden='true')
+                          i.fa.fa-star(aria-hidden='true')
+                          i.fa.fa-star(aria-hidden='true')
+                        a(href='#')
+                          h4 Rhusda D&rsquo;suza
+                        span Bachelor
+                        p
+                          | There are many variations of passages of Lorem Ipsum available, but the majority have suffered altera tion in some form, by injected humour
+                    .instructor-list.mt-15
+                      .image
+                        img(src='images/teachers/7.jpg', width='150', alt='')
+                      .author-name
+                        .client-rating
+                          i.fa.fa-star(aria-hidden='true')
+                          i.fa.fa-star(aria-hidden='true')
+                          i.fa.fa-star(aria-hidden='true')
+                          i.fa.fa-star(aria-hidden='true')
+                          i.fa.fa-star(aria-hidden='true')
+                        a(href='#')
+                          h4 Eyamin Hossen
+                        span Bachelor
+                        p
+                          | There are many variations of passages of Lorem Ipsum available, but the majority have suffered altera tion in some form, by injected humour
+                  // /.Panel 4
+        .col-lg-4.col-md-12
+          .sidebar-area
+            .course-features-info
+              h4.desc-title Course Features
+              ul
+                li
+                  i.fa.fa-files-o
+                  span.label Lectures
+                  span.value 9
+                li
+                  i.fa.fa-clock-o
+                  span.label Duration
+                  span.value 1.5 hours
+                li
+                  i.fa.fa-level-up
+                  span.label Skill level
+                  span.value All level
+                li
+                  i.fa.fa-language
+                  span.label Language
+                  span.value English
+                li
+                  i.fa.fa-users
+                  span.label Students
+                  span.value 560
+                li
+                  i.fa.fa-check-square-o
+                  span.label Assessments
+                  span.value Yes
+            .cate-box
+              h3.title Courses Categories
+              ul
+                li
+                  i.fa.fa-angle-right(aria-hidden='true')
+                  a(href='#')
+                    | Learning Centers
+                    span (05)
+                li
+                  i.fa.fa-angle-right(aria-hidden='true')
+                  a(href='#')
+                    | Video Reviews
+                    span (07)
+                li
+                  i.fa.fa-angle-right(aria-hidden='true')
+                  a(href='#')
+                    | Engineering Tech
+                    span (09)
+                li
+                  i.fa.fa-angle-right(aria-hidden='true')
+                  a(href='#')
+                    | Righteous Indignation
+                    span (08)
+                li
+                  i.fa.fa-angle-right(aria-hidden='true')
+                  a(href='#')
+                    | General Education
+                    span (04)
+            .latest-courses
+              h3.title Latest Courses
+              .post-item
+                .post-img
+                  a(href='courses-details.html')
+                    img(src='images/blog-details/sm1.jpg', alt='', title='News image')
+                | &#x9;
+                .post-desc
+                  h4
+                    a(href='courses-details.html') Raken develops reporting The software
+                  | &#x9;
+                  span.duration
+                    i.fa.fa-clock-o(aria-hidden='true')
+                    |  4 Years
+                  span.price
+                    | Price:
+                    span $350
+              | &#x9;
+              .post-item
+                .post-img
+                  a(href='courses-details.html')
+                    img(src='images/blog-details/sm2.jpg', alt='', title='News image')
+                | &#x9;
+                .post-desc
+                  h4
+                    a(href='courses-details.html') Raken develops reporting The software
+                  | &#x9;
+                  span.duration
+                    i.fa.fa-clock-o(aria-hidden='true')
+                    |  4 Years
+                  | &#x9;
+                  span.price
+                    | Price:
+                    span $350
+              | &#x9;
+              .post-item
+                .post-img
+                  a(href='courses-details.html')
+                    img(src='images/blog-details/sm3.jpg', alt='', title='News image')
+                | &#x9;
+                .post-desc
+                  h4
+                    a(href='courses-details.html') Raken develops reporting The software
+                  | &#x9;
+                  span.duration
+                    i.fa.fa-clock-o(aria-hidden='true')
+                    |  4 Years
+                  span.price
+                    | Price:
+                    span $350
+            .tags-cloud.clearfix
+              h3.title courses Tags
+              ul
+                li
+                  a(href='#') SCIENCE
+                li
+                  a(href='#') HUMANITIES
+                li
+                  a(href='#') DIPLOMA
+                li
+                  a(href='#') BUSINESS
+                li
+                  a(href='#') SPROTS
+                li
+                  a(href='#') RESEARCH
+                li
+                  a(href='#') ARTS
+                li
+                  a(href='#') ADMISSIONS
+    .container.pt-45
+      // Testimonial Start
+      .related-courses.rs-courses-3
+        .sec-title-2.mb-50
+          h2 RELATED COURSES
+          p
+            | Considering primary motivation for the generation of narratives is a useful concept
+        .rs-carousel.owl-carousel(data-loop='true', data-items='3', data-margin='30', data-autoplay='true', data-autoplay-timeout='5000', data-smart-speed='1500', data-nav='true', data-nav-speed='false', data-mobile-device='1', data-mobile-device-nav='true', data-ipad-device='2', data-ipad-device-nav='true', data-md-device='3', data-md-device-nav='true')
+          .course-item
+            .course-img
+              img(src='images/courses/10.jpg', alt='')
+              span.course-value $450
+              .course-toolbar
+                h4.course-category
+                  a(href='#') Science
+                .course-date
+                  i.fa.fa-calendar
+                  |  28-06-2017
+                .course-duration
+                  i.fa.fa-clock-o
+                  |  4 year
+            .course-body
+              .course-desc
+                h4.course-title
+                  a(href='courses-details.html') Computer Engineering
+                p
+                  | Cras ultricies lacus consectetur, consectetur scelerisque arcu.Curabitur Aenean egestas a
+                  | Nullam augue augue.
+            .course-footer
+              .course-seats
+                i.fa.fa-users
+                |  70 SEATS
+              .course-button
+                a(href='#') APPLY NOW
+          .course-item
+            .course-img
+              img(src='images/courses/11.jpg', alt='')
+              span.course-value $450
+              .course-toolbar
+                h4.course-category
+                  a(href='#') Business
+                .course-date
+                  i.fa.fa-calendar
+                  |  28-06-2017
+                .course-duration
+                  i.fa.fa-clock-o
+                  |  4 year
+            .course-body
+              .course-desc
+                h3.course-title
+                  a(href='#') Business Management
+                p
+                  | Cras ultricies lacus consectetur, consectetur scelerisque arcu.Curabitur Aenean egestas a
+                  | Nullam augue augue.
+            .course-footer
+              .course-seats
+                i.fa.fa-users
+                |  70 SEATS
+              .course-button
+                a(href='#') APPLY NOW
+          .course-item
+            .course-img
+              img(src='images/courses/13.jpg', alt='')
+              span.course-value $450
+              .course-toolbar
+                h4.course-category
+                  a(href='#') Diploma
+                .course-date
+                  i.fa.fa-calendar
+                  |  28-06-2017
+                .course-duration
+                  i.fa.fa-clock-o
+                  |  4 year
+            .course-body
+              .course-desc
+                h3.course-title
+                  a(href='#') Diploma Electrical
+                p
+                  | Cras ultricies lacus consectetur, consectetur scelerisque arcu.Curabitur Aenean egestas a
+                  | Nullam augue augue.
+            .course-footer
+              .course-seats
+                i.fa.fa-users
+                |  70 SEATS
+              .course-button
+                a(href='#') APPLY NOW
+  // Courses Details End
+  // Partner Start
+  #rs-partner.rs-partner.pt-70.pb-170.sec-color
+    .container
+      .rs-carousel.owl-carousel(data-loop='true', data-items='5', data-margin='80', data-autoplay='true', data-autoplay-timeout='5000', data-smart-speed='2000', data-dots='false', data-nav='false', data-nav-speed='false', data-mobile-device='2', data-mobile-device-nav='false', data-mobile-device-dots='false', data-ipad-device='4', data-ipad-device-nav='false', data-ipad-device-dots='false', data-md-device='5', data-md-device-nav='false', data-md-device-dots='false')
+        .partner-item
+          a(href='#')
+            img(src='images/partner/1.png', alt='Partner Image')
+        .partner-item
+          a(href='#')
+            img(src='images/partner/2.png', alt='Partner Image')
+        .partner-item
+          a(href='#')
+            img(src='images/partner/3.png', alt='Partner Image')
+        .partner-item
+          a(href='#')
+            img(src='images/partner/4.png', alt='Partner Image')
+        .partner-item
+          a(href='#')
+            img(src='images/partner/5.png', alt='Partner Image')
+  // Partner End
