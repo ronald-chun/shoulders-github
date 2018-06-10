@@ -25,8 +25,7 @@ app.set('views', [
 	path.join(__dirname, 'component'),
 ]);
 
-app.engine('html', require('ejs').renderFile);
-app.set('view engine', 'html');
+app.set('view engine', 'jade');
 // app.set('view options', {
 // 	layout: 'layout'
 // });
@@ -130,9 +129,8 @@ var site_config = {
 };
 
 app.get('/', (req, res) => {
-	res.render('index', {
-		site_config: site_config,
-	});
+	res.locals.title = "Shoulders";
+	res.render('index');
 });
 
 // catch 404 and forward to error handler
@@ -156,6 +154,7 @@ app.use((err, req, res, next) => {
 
 		// console.log(req.app.get('env'));
 		// render the error page
+		res.send(err.message)
 		console.log(err)
 	} catch (ex) {}
 
