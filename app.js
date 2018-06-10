@@ -1,3 +1,4 @@
+require('dotenv').load();
 const express = require('express');
 const timeout = require('connect-timeout');
 
@@ -18,6 +19,8 @@ var csrfProtection = csrf({
 	cookie: true
 })
 // get config
+var config = require("./conf")
+
 
 // view engine setup
 app.set('views', [
@@ -25,7 +28,7 @@ app.set('views', [
 	path.join(__dirname, 'component'),
 ]);
 
-app.set('view engine', 'jade');
+app.set('view engine', 'pug');
 // app.set('view options', {
 // 	layout: 'layout'
 // });
@@ -124,15 +127,23 @@ app.use(function(err, req, res, next) {
 // });
 
 // nomarl router
-var site_config = {
-	title: "Shoulders",
-};
+app.use((req, res, next) => {
+	// if (utility.isRequestWebPage(req) {
+	// 	res.locals.title = process.env.TITLE;
+	// 	res.locals.subtitle = process.env.SUBTITLE;
+	// } 
+	res.locals.title = process.env.TITLE;
+	res.locals.email = config.email
+	res.locals.catergory = config.catergory
+	next()
+})
 
 app.get('/', (req, res) => {
-	res.locals.title = "Shoulders";
 	res.render('index');
 });
-
+app.get('/courses-details', (req, res) => {
+	res.render('courses-details2');
+});
 // catch 404 and forward to error handler
 
 app.use((req, res, next) => {
