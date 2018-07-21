@@ -1,0 +1,35 @@
+footer {
+	display: flex;
+	justify-content: center;
+	background-color: $gainsboro;
+	padding: 1rem 0;
+
+	.footer {
+
+		.title {
+			color: $dim-grey;
+			margin-right: 2rem;
+		}
+
+		ul {
+			list-style-type: none;
+			padding-left: 1rem;
+		}
+
+		.list-item {
+			color: $dim-grey;
+		}
+
+		#social-media {
+			text-align: right;
+
+			a {
+				box-shadow: none;
+			}
+
+			i {
+				font-size: 36px;
+			}
+		}
+	}
+}

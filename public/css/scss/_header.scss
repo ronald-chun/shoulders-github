@@ -1,15 +1,33 @@
 header {
 	display: flex;
 	justify-content: center;
+	background-color: $primary;
+	padding: 1rem 0;
 
-	.container {
+	.header {
 		display: flex;
 		justify-content: space-between;
-		width: 100%;
-		max-width: 1280px;
 
-		.left{
+		.left {
 			.title {
+				color: $white;
+				margin-right: 2rem;
+			}
+
+			#search-button {
+				color: $white;
+				background-color: transparent;
+				box-shadow: none;
+			}
+		}
+
+		.right {
+			#log-in {
+				color: $white;
+				background-color: transparent;
+			}
+
+			#sign-up {
 				color: $primary;
 			}
 		}
