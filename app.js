@@ -32,8 +32,7 @@ app.set('view engine', 'pug');
 // app.set('view options', {
 // 	layout: 'layout'
 // });
-
-app.use(logger('dev'));
+// app.use(logger('dev'));
 
 // Initialize sessions
 app.use(bodyParser.json({
@@ -55,7 +54,10 @@ app.use(cookieSession({
 	keys: ['eqewqjr', 'kf3.f'],
 }));
 
-
+app.use((req, res, next) => {
+	console.log(req.url)
+	next()
+});
 // static routing
 app.use(express.static(path.join(__dirname, 'public')));
 // app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
@@ -72,7 +74,7 @@ app.use(function(req, res, next) {
 	// if (utility.isRequestWebPage(req) {
 	// 	res.locals.title = process.env.TITLE;
 	// 	res.locals.subtitle = process.env.SUBTITLE;
-	// }    
+	// }
 	if (req.url.substr(-1) == '/' && req.url.length > 1) {
 		res.redirect(301, req.url.slice(0, -1));
 	} else {
@@ -102,7 +104,6 @@ app.use(multipartMiddleware, function(req, res, next) {
 app.use(csrf());
 app.use(function(err, req, res, next) {
 	if (err.code !== 'EBADCSRFTOKEN') {
-
 		next(err)
 	} else {
 		next(err);
@@ -127,20 +128,42 @@ app.use(function(err, req, res, next) {
 // });
 
 // nomarl router
-app.use((req, res, next) => {
-	// if (utility.isRequestWebPage(req) {
-	// 	res.locals.title = process.env.TITLE;
-	// 	res.locals.subtitle = process.env.SUBTITLE;
-	// } 
+app.use((req,res)=>{
 	res.locals.title = process.env.TITLE;
-	res.locals.email = config.email
-	res.locals.catergory = config.catergory
+	res.locals.current_menu_item = "home";
+	res.locals.categories = {
+		mathematics: {
+			'zh': '數學',
+			'en': 'Mathematics'
+		},
+		science: {
+			'zh': '科學',
+			'en': 'Science'
+		},
+		robot: {
+			'zh': '機械人',
+			'en': 'Robot'
+		},
+		diy: {
+			'zh': '動手做',
+			'en': 'DIY'
+		},
+	};
 	next()
 })
-
 app.get('/', (req, res) => {
+	
 	res.render('index');
 });
+
+app.get('/category/:categroy', (req, res) => {
+	res.locals.current_menu_item = "category";
+
+	var category = req.params.categroy;
+	res.locals.category_name = res.locals.categories[category]['zh'];
+	res.render('category-individual');
+});
+
 app.get('/courses-details', (req, res) => {
 	res.render('courses-details2');
 });
@@ -161,7 +184,7 @@ app.use((err, req, res, next) => {
 		}
 
 		res.locals.message = err.message;
-		res.locals.error = err ;
+		res.locals.error = err;
 
 		// console.log(req.app.get('env'));
 		// render the error page

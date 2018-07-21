@@ -40,7 +40,7 @@ html(lang='zxx')
       //- style css
       link(rel='stylesheet', type='text/css', href='css/style.css')
       //- switch color presets css
-      link#switch_style(href='#', rel='stylesheet', type='text/css')
+      //- link#switch_style(href='#', rel='stylesheet', type='text/css')
       //- responsive css
       link(rel='stylesheet', type='text/css', href='css/responsive.css')
       //- if lt IE 9
@@ -156,9 +156,9 @@ html(lang='zxx')
                       li.menu-item-has-children
                         a(href='#') 分類
                         ul.sub-menu
-                          each c in catergory
+                          each category in Object.keys(categories)
                             li
-                              a(href='#') #{c}
+                              a(href='#') #{categories[category].zh}
                   .right-bar-icon.rs-offcanvas-link.text-right
                     a.hidden-xs.rs-search(data-target='.search-modal', data-toggle='modal', href='#')
                       i.fa.fa-search
@@ -174,30 +174,15 @@ html(lang='zxx')
             .col-lg-3.col-md-12
               .about-widget
                 img(src='images/logo-footer.png', alt='Footer Logo')
-                p
-                  | We create Premium Html Themes for more than three years. Our team goal is to reunite the elegance of unique.
+                p We create Premium Html Themes for more than three years. Our team goal is to reunite the elegance of unique.
                 p.margin-remove We create Unique and Easy To Use Flexible Html Themes.
-            .col-lg-3.col-md-12
-            .col-lg-3.col-md-12
             .col-lg-3.col-md-12
               h5.footer-title 分類
               ul.sitemap-widget
-                li
-                  a(href='/')
-                    i.fa.fa-angle-right(aria-hidden='true')
-                    | 數學
-                li
-                  a(href='#')
-                    i.fa.fa-angle-right(aria-hidden='true')
-                    | 科學
-                li
-                  a(href='#')
-                    i.fa.fa-angle-right(aria-hidden='true')
-                    | 機械人
-                li
-                  a(href='#')
-                    i.fa.fa-angle-right(aria-hidden='true')
-                    | 動手做
+                each category in Object.keys(categories)
+                  li
+                    a(href='/') 
+                      i.fa.fa-angle-right(aria-hidden='true')  #{categories[category].zh}
           //- .footer-share
           //-   ul
           //-     li
