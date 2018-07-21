@@ -1,0 +1,43 @@
+{
+  "name": "shoulders",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "bower install && grunt build",
+    "start": "nodemon server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/ronaldchunyin/shoulders.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/ronaldchunyin/shoulders/issues"
+  },
+  "homepage": "https://gitlab.com/ronaldchunyin/shoulders#README",
+  "dependencies": {
+    "connect-multiparty": "^2.1.0",
+    "connect-timeout": "^1.9.0",
+    "cookie-parser": "^1.4.3",
+    "cookie-session": "^2.0.0-beta.3",
+    "csurf": "^1.9.0",
+    "dotenv": "^5.0.1",
+    "ejs": "^2.6.1",
+    "express": "^4.16.3",
+    "grunt": "^1.0.2",
+    "grunt-contrib-clean": "^1.1.0",
+    "grunt-contrib-copy": "^1.0.0",
+    "helmet": "^3.12.1",
+    "jade": "^1.11.0",
+    "morgan": "^1.9.0",
+    "normalize-port": "^1.0.0",
+    "request-context": "^2.0.0",
+    "serve-favicon": "^2.5.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.5"
+  }
+}
