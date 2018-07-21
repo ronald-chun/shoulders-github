@@ -6351,6 +6351,41 @@ footer {
     footer .footer #social-media i {
       font-size: 36px; }
 
+.login {
+  min-height: 60vh;
+  display: flex;
+  padding: 3rem 0;
+  display: flex;
+  justify-content: center; }
+  .login .login-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    border: 1px solid #808080;
+    padding-top: 2rem;
+    padding-bottom: 1rem; }
+    .login .login-box button {
+      width: 300px;
+      background-color: #ffffff;
+      border: 1px solid #DCDCDC;
+      margin-bottom: 1rem; }
+      .login .login-box button i {
+        margin-right: 1rem; }
+    .login .login-box #login-google i {
+      color: #4285f4; }
+    .login .login-box #login-facebook i {
+      color: #3b5998; }
+    .login .login-box #login-twitter i {
+      color: #55acee; }
+    .login .login-box hr {
+      width: 80%; }
+    .login .login-box .email-container {
+      min-width: 300px; }
+      .login .login-box .email-container input {
+        width: 100%;
+        margin-bottom: 1rem; }
+
 .container {
   width: 100%;
   max-width: 1280px; }

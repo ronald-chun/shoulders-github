@@ -220,8 +220,8 @@ app.use((req, res, next) => {
 	}
 
 	next();
-
 });
+
 // initialize modules
 if (process.env.PREINIT)
 	process.env.PREINIT.split(",").forEach(_md => {
@@ -248,6 +248,10 @@ defaultMenu.sort((a, b) => a.last > b.last)
 
 app.get('/', (req, res) => {
 	res.render('index');
+});
+
+app.get('/category/:categroy', (req, res) => {
+	res.locals.current_menu_item = "category";
 });
 // catch 404 and forward to error handler
 

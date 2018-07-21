@@ -3,13 +3,14 @@
 
 // App color
 @import "color";
+@import "brand-color";
 
 // Bootstrap
 @import "../../../bower_components/bootstrap/scss/bootstrap";
 
 @import "header";
 @import "footer";
-
+@import "login";
 
 .container {
 	width: 100%;
