@@ -127,7 +127,7 @@ app.use(function(err, req, res, next) {
 // });
 
 // nomarl router
-app.use((req,res)=>{
+app.use((req,res, next)=>{
 	res.locals.title = process.env.TITLE;
 	res.locals.current_menu_item = "home";
 	res.locals.categories = {
@@ -151,7 +151,6 @@ app.use((req,res)=>{
 	next()
 })
 app.get('/', (req, res) => {
-	
 	res.render('index');
 });
 
