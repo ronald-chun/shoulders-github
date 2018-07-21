@@ -1,0 +1,36 @@
+header {
+	display: flex;
+	justify-content: center;
+	background-color: $primary;
+	padding: 1rem 0;
+	position: fixed;
+	top: 0;
+	.header {
+		display: flex;
+		justify-content: space-between;
+
+		.left {
+			.title {
+				color: $white;
+				margin-right: 2rem;
+			}
+
+			#search-button {
+				color: $white;
+				background-color: transparent;
+				box-shadow: none;
+			}
+		}
+
+		.right {
+			#log-in {
+				color: $white;
+				background-color: transparent;
+			}
+
+			#sign-up {
+				color: $primary;
+			}
+		}
+	}
+}
