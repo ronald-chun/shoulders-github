@@ -1,3 +1,7 @@
+const result = require('dotenv').config();
+if (result.error) {
+	throw result.error;
+} 
 const express = require('express');
 const timeout = require('connect-timeout');
 
@@ -12,6 +16,7 @@ const contextService = require('request-context');
 const multipart = require('connect-multiparty');
 var multipartMiddleware = multipart();
 
+
 var app = express();
 var csrf = require('csurf');
 var csrfProtection = csrf({
@@ -24,7 +29,6 @@ var config = require("./conf")
 // view engine setup
 app.set('views', [
 	path.join(__dirname, 'public/views'),
-	path.join(__dirname, 'component'),
 ]);
 
 app.set('view engine', 'pug');
@@ -47,20 +51,16 @@ app.use(helmet());
 app.disable('x-powered-by')
 app.set('trust proxy', 1)
 
-app.use(cookieParser('24fd.g;'));
+app.use(cookieParser());
 app.use(cookieSession({
 	name: 'session',
 	keys: ['eqewqjr', 'kf3.f'],
 }));
 
-app.use((req, res, next) => {
-	console.log(req.url)
-	next()
-});
 // static routing
-app.use(express.static(path.join(__dirname, 'public')));
 // app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 app.use(contextService.middleware('request'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // basic routing
 app.use(timeout(30000));
@@ -127,9 +127,11 @@ app.use(function(err, req, res, next) {
 // });
 
 // nomarl router
-app.use((req,res)=>{
+app.use((req, res, next) => {
+	console.log(req.url)
+
 	res.locals.title = process.env.TITLE;
-	res.locals.current_menu_item = "home";
+	console.log(res.locals.title)
 	res.locals.categories = {
 		mathematics: {
 			'zh': '數學',
@@ -151,7 +153,7 @@ app.use((req,res)=>{
 	next()
 })
 app.get('/', (req, res) => {
-	
+	res.locals.current_menu_item = "home";
 	res.render('index');
 });
 

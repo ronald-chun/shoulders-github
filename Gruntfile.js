@@ -1,25 +1,29 @@
 module.exports = function(grunt) {
     var bower = {
         js: [
-            'bootstrap/dist/js/bootstrap.*',
-            'jquery/dist/jquery.js*',
-            'jquery/dist/jquery.min.js*',
-            'gasparesganga-jquery-loading-overlay/extras/loadingoverlay_progress/loadingoverlay_progress.js',
-            'gasparesganga-jquery-loading-overlay/extras/loadingoverlay_progress/loadingoverlay_progress.min.js',
-            'gasparesganga-jquery-loading-overlay/src/loadingoverlay.js',
-            'gasparesganga-jquery-loading-overlay/src/loadingoverlay.min.js'
+            'bootstrap/dist/js/bootstrap.min.js',
+            'jquery/dist/jquery.min.js',
+            'owl.carousel/dist/owl.carousel.min.js',
+            'magnific-popup/dist/jquery.magnific-popup.min.js'
+        //     'gasparesganga-jquery-loading-overlay/extras/loadingoverlay_progress/loadingoverlay_progress.js',
+        //     'gasparesganga-jquery-loading-overlay/extras/loadingoverlay_progress/loadingoverlay_progress.min.js',
+        //     'gasparesganga-jquery-loading-overlay/src/loadingoverlay.js',
+        //     'gasparesganga-jquery-loading-overlay/src/loadingoverlay.min.js'
         ],
         css: [
-            'bootstrap/dist/css/bootstrap.*',
-            'font-awesome/css/*',
-            'datatables.net-dt/css/jquery.dataTables.*',
-            'datatables.net-buttons-dt/css/buttons.dataTables.*',
+            'bootstrap/dist/css/bootstrap.min.css',
+            'font-awesome/css/font-awesome.min.css',
+            'owl.carousel/dist/assets/owl.carousel.min.css',
+            'magnific-popup/dist/magnific-popup.css'
+
+            // 'datatables.net-dt/css/jquery.dataTables.*',
+            // 'datatables.net-buttons-dt/css/buttons.dataTables.*',
         ],
         fonts: [
             'font-awesome/fonts/*'
         ],
         image: [
-            'gasparesganga-jquery-loading-overlay/src/loading.gif',
+            // 'gasparesganga-jquery-loading-overlay/src/loading.gif',
         ]
     }
 
