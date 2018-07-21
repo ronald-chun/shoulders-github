@@ -1,0 +1,27 @@
+extends ./_layout.pug
+
+append css
+
+block content
+    div.container.login
+        div.login-box
+            button#login-google
+                i.fa.fa-google
+                span Google
+            button#login-facebook
+                i.fa.fa-facebook
+                span Facebook
+            button#login-twitter
+                i.fa.fa-twitter
+                span Twitter
+            hr
+            div.email-container
+                label Email:
+                br
+                input(type='email', placeholder='you@example.org')#login-email
+                label Password:
+                br
+                input(type='password', placeholder='******')#login-password
+
+
+

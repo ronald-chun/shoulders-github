@@ -13,25 +13,47 @@ html(lang='zxx')
         link(rel='shortcut icon', type='image/x-icon', href='images/fav.png')
 
         block css
-            link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
-            link(rel='stylesheet', href='../css/app.css')
+            link(rel='stylesheet', href='assets/css/font-awesome.min.css')
+            link(rel='stylesheet', href='css/app.css')
         block js
 
     body
         header
-            div.container
+            div.container.header
                 div.left
                     span.title Sholuders
                     input(placeholder='Search...')#serach-bar
-                    button.btn
+                    button#search-button.btn
                         i.fa.fa-search
                 div.right
-                    button.btn Log in
-                    button.btn Sign Up
-
+                    button#log-in.btn Log in
+                    button#sign-up.btn Sign Up
         block content
+        footer
+            div.container.footer
+                div.row
+                    div.col-sm-6.col-md-3.footer-section
+                        span.title Sholuders
+                        ul
+                            a(href='#').list-item
+                                li  Home
+                            a(href='#').list-item
+                                li  About Us
+                    div.col-sm-6.col-md-3.footer-section
+                        span.title Category
+                        ul
+                            a(href='#').list-item
+                                li  Mathematics
+                            a(href='#').list-item
+                                li  Science
+                            a(href='#').list-item
+                                li  Robot
+                            a(href='#').list-item
+                                li  DIY
+                    div.col-sm-6.col-md-3.footer-section
+                    div.col-sm-6.col-md-3.footer-section#social-media
+                        a(href="https://www.facebook.com/Shoulders-188591295102544/", target="_blank").btn.list-item
+                            i.fa.fa-facebook-square
+                        a(href="#", target="_blank").btn.list-item
+                            i.fa.fa-instagram
 
-    
-    //- Footer Start
-    footer
-    //- Footer Top

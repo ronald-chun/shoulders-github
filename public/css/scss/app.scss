@@ -1,4 +1,19 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700');
+
+// App color
 @import "color";
+@import "brand-color";
+
+// Bootstrap
+@import "../../../bower_components/bootstrap/scss/bootstrap";
 
 @import "header";
-@import "sidebar"
+@import "footer";
+@import "login";
+@import "sidebar";
+
+.container {
+	width: 100%;
+	max-width: 1280px;
+}
