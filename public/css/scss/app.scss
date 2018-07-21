@@ -6,11 +6,12 @@
 @import "brand-color";
 
 // Bootstrap
-@import "../../../node_modules/bootstrap/scss/bootstrap";
+@import "../../../bower_components/bootstrap/scss/bootstrap";
 
 @import "header";
 @import "footer";
 @import "login";
+@import "sidebar";
 
 .container {
 	width: 100%;

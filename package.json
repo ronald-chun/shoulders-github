@@ -20,7 +20,7 @@
   },
   "homepage": "https://gitlab.com/ronaldchunyin/shoulders#README",
   "dependencies": {
-    "bootstrap": "^4.1.2",
+    "bcrypt": "^3.0.0",
     "connect-multiparty": "^2.1.0",
     "connect-timeout": "^1.9.0",
     "cookie-parser": "^1.4.3",
@@ -33,10 +33,12 @@
     "grunt-contrib-clean": "^1.1.0",
     "grunt-contrib-copy": "^1.0.0",
     "helmet": "^3.12.1",
+    "mongoose": "^5.2.4",
     "morgan": "^1.9.0",
     "normalize-port": "^1.0.0",
     "pug": "^2.0.3",
     "request-context": "^2.0.0",
+    "sanitize-html": "^1.18.2",
     "serve-favicon": "^2.5.0"
   },
   "devDependencies": {

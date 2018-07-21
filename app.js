@@ -1,7 +1,10 @@
 const result = require('dotenv').config();
 if (result.error) {
 	throw result.error;
-} 
+}
+
+const {readdirSync, statSync} = require('fs')
+const {join} = require('path')
 const express = require('express');
 const timeout = require('connect-timeout');
 
@@ -10,25 +13,68 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const cookieSession = require('cookie-session');
 const helmet = require('helmet');
-const path = require('path');
 const logger = require('morgan');
 const contextService = require('request-context');
 const multipart = require('connect-multiparty');
-var multipartMiddleware = multipart();
+const sanitizeHtml = require('sanitize-html');
+const multipartMiddleware = multipart();
 
 
-var app = express();
-var csrf = require('csurf');
-var csrfProtection = csrf({
-	cookie: true
-})
-// get config
-var config = require("./conf")
-
+const app = express();
+const csrf = require('csurf');
+const dirs = p => readdirSync(p).filter(f => statSync(join(p, f)).isDirectory())
+const formatMenu = (menu, url) => {
+	var result = [];
+	menu.forEach(_m => {
+		_m.selected = `/${_m.name}` === url;
+		if (_m.group !== undefined) {
+			var groupIndex = result.findIndex(_res => _res.group == _m.group)
+			if (groupIndex == -1)
+				result.push({
+					group: _m.group,
+					items: [_m],
+					selected: _m.selected,
+				});
+			else {
+				result[groupIndex].items.push(_m);
+				if (_m.selected)
+					result[groupIndex].selected = _m.selected
+			}
+		} else {
+			result.push(_m)
+		}
+	});
+	return result
+}
+const HTMLfilter = (obj) => {
+	var temp = JSON.parse(JSON.stringify(obj));
+	Object.keys(temp).forEach((_d) => {
+		if (sanitizeHtml(_d, {
+				allowedTags: [],
+				parser: {
+					lowerCaseTags: true
+				}
+			}) != _d)
+			throw new Error(`Key: ${_d} should not contain HTML`)
+		if (typeof temp[_d] == "object" && temp[_d] != null) {
+			var result = HTMLfilter(temp[_d])
+			temp[_d] = result
+		} else {
+			temp[_d] = sanitizeHtml(temp[_d], {
+				allowedTags: sanitizeHtml.defaults.allowedTags.concat(['map', 'videolink', 'url', 'mail']),
+				parser: {
+					lowerCaseTags: true
+				}
+			}).replace(/\$lt;/, "<").replace(/\$gt;/, ">")
+		}
+	})
+	return temp
+}
 
 // view engine setup
 app.set('views', [
-	path.join(__dirname, 'public/views'),
+	'public/views',
+	'components'
 ]);
 
 app.set('view engine', 'pug');
@@ -37,30 +83,35 @@ app.set('view engine', 'pug');
 // });
 // app.use(logger('dev'));
 
+
+app.use(helmet());
+app.disable('x-powered-by')
+app.set('trust proxy', 1)
+
+
+
+// static routing
+// app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
+app.use(contextService.middleware('request'));
+app.use(express.static('public'));
 // Initialize sessions
+app.use(cookieParser());
 app.use(bodyParser.json({
 	parameterLimit: '10000'
+}));
+app.use(bodyParser.urlencoded({
+	extended: false
+}));
+
+app.use(cookieSession({
+	name: 'session',
+	keys: ['eqewqjr', 'kf3.f'],
 }));
 
 app.use(bodyParser.urlencoded({
 	extended: true,
 	parameterLimit: '10000'
 }));
-
-app.use(helmet());
-app.disable('x-powered-by')
-app.set('trust proxy', 1)
-
-app.use(cookieParser());
-app.use(cookieSession({
-	name: 'session',
-	keys: ['eqewqjr', 'kf3.f'],
-}));
-
-// static routing
-// app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
-app.use(contextService.middleware('request'));
-app.use(express.static(path.join(__dirname, 'public')));
 
 // basic routing
 app.use(timeout(30000));
@@ -70,10 +121,6 @@ app.use(function(req, res, next) {
 
 // pass layout setting to all pages
 app.use(function(req, res, next) {
-	// if (utility.isRequestWebPage(req) {
-	// 	res.locals.title = process.env.TITLE;
-	// 	res.locals.subtitle = process.env.SUBTITLE;
-	// }
 	if (req.url.substr(-1) == '/' && req.url.length > 1) {
 		res.redirect(301, req.url.slice(0, -1));
 	} else {
@@ -100,7 +147,9 @@ app.use(multipartMiddleware, function(req, res, next) {
 // 	next();
 // });
 
-app.use(csrf());
+app.use(csrf({
+	cookie: true
+}));
 app.use(function(err, req, res, next) {
 	if (err.code !== 'EBADCSRFTOKEN') {
 		next(err)
@@ -110,28 +159,25 @@ app.use(function(err, req, res, next) {
 // handle CSRF token errors here 
 })
 // XSS
-// app.use(function(req, res, next) {
-// 	if (utility.HTMLfilter(req.body) instanceof Error) {
-// 		const err = utility.HTMLfilter(req.body);
-// 		err.status = 400;
-// 		next(err);
-// 	} else if (utility.HTMLfilter(req.query) instanceof Error) {
-// 		const err = utility.HTMLfilter(req.query);
-// 		err.status = 400;
-// 		next(err);
-// 	} else {
-// 		req.body = utility.HTMLfilter(req.body);
-// 		req.query = utility.HTMLfilter(req.query)
-// 		next()
-// 	}
-// });
+app.use(function(req, res, next) {
+	if (HTMLfilter(req.body) instanceof Error) {
+		const err = HTMLfilter(req.body);
+		err.status = 400;
+		next(err);
+	} else if (HTMLfilter(req.query) instanceof Error) {
+		const err = HTMLfilter(req.query);
+		err.status = 400;
+		next(err);
+	} else {
+		req.body = HTMLfilter(req.body);
+		req.query = HTMLfilter(req.query)
+		next()
+	}
+});
 
 // nomarl router
 app.use((req, res, next) => {
-	console.log(req.url)
-
 	res.locals.title = process.env.TITLE;
-	console.log(res.locals.title)
 	res.locals.categories = {
 		mathematics: {
 			'zh': '數學',
@@ -152,25 +198,60 @@ app.use((req, res, next) => {
 	};
 	next()
 })
-app.get('/', (req, res) => {
-	res.locals.current_menu_item = "home";
-	res.render('index');
+
+let defaultMenu = [];
+const nomarlPage = ["/home"]
+
+app.use((req, res, next) => {
+	// authorize
+	res.locals.title = process.env.TITLE;
+	res.locals.subtitle = process.env.SUBTITLE;
+	res.locals.pageTitle = defaultMenu.find(_d => `/${_d.name}` === req.url) ? defaultMenu.find(_d => `/${_d.name}` === req.url).display : ""
+	if (req.user) {
+		res.locals.username = req.user.username;
+		res.locals.userGroup = req.user.userGroup;
+		res.locals.userRights = req.user.userRights;
+		if (res.locals.userRights) return res.redirect('login')
+		var accessableMenu = defaultMenu.filter(_menu => res.locals.userRights.includes(_menu.name))
+		if (!accessableMenu.some(_menu => req.url.startsWith(_menu.action)) && !nomarlPage.includes(req.url)) return res.redirect('login')
+		res.locals.menu = formatMenu(accessableMenu, req.url);
+	} else {
+		res.locals.menu = formatMenu(defaultMenu, req.url);
+	}
+
+	next();
 });
 
-app.get('/login', (req, res) => {
-    res.render('login');
+// initialize modules
+if (process.env.PREINIT)
+	process.env.PREINIT.split(",").forEach(_md => {
+		var obj = require(`./components/${_md}`);
+		if (obj.menu)
+			defaultMenu = defaultMenu.concat(obj.menu)
+		if (obj.router) app.use(`/${obj.name || ""}`, obj.router);
+		console.log('router initialize ' + _md);
+	})
+
+dirs('./components/').forEach(_md => {
+	if (!process.env.PREINIT || !process.env.PREINIT.includes(_md)) {
+		var obj = require(`./components/${_md}`);
+		if (obj.router) {
+			app.use(`/${obj.name || ""}`, obj.router);
+			console.log('router initialize ' + _md);
+		}
+		if (obj.menu)
+			defaultMenu = defaultMenu.concat(obj.menu)
+	}
+})
+
+defaultMenu.sort((a, b) => a.last > b.last)
+
+app.get('/', (req, res) => {
+	res.render('index');
 });
 
 app.get('/category/:categroy', (req, res) => {
 	res.locals.current_menu_item = "category";
-
-	var category = req.params.categroy;
-	res.locals.category_name = res.locals.categories[category]['zh'];
-	res.render('category-individual');
-});
-
-app.get('/courses-details', (req, res) => {
-	res.render('courses-details2');
 });
 // catch 404 and forward to error handler
 
