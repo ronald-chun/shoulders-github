@@ -5,6 +5,9 @@ header {
 	padding: 1rem 0;
 	position: fixed;
 	top: 0;
+	z-index: 9;
+	width: 100%;
+
 	.header {
 		display: flex;
 		justify-content: space-between;
@@ -13,6 +16,7 @@ header {
 			.title {
 				color: $white;
 				margin-right: 2rem;
+				text-decoration: none;
 			}
 
 			#search-button {

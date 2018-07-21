@@ -10,7 +10,7 @@ html(lang='zxx')
         meta(name='viewport', content='width=device-width, initial-scale=1')
         //- favicon
         link(rel='apple-touch-icon', href='apple-touch-icon.png.html')
-        link(rel='shortcut icon', type='image/x-icon', href='images/fav.png')
+        //link(rel='shortcut icon', type='image/x-icon', href='images/fav.png')
 
         block css
             link(rel='stylesheet', href='assets/css/font-awesome.min.css')
@@ -21,14 +21,17 @@ html(lang='zxx')
         header
             div.container.header
                 div.left
-                    span.title Sholuders
+                    a(href='/').title Sholuders
                     input(placeholder='Search...')#serach-bar
                     button#search-button.btn
                         i.fa.fa-search
                 div.right
                     button#log-in.btn Log in
                     button#sign-up.btn Sign Up
-        block content
+
+        div.body-container
+            block content
+
         footer
             div.container.footer
                 div.row

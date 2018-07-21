@@ -6314,13 +6314,18 @@ header {
   display: flex;
   justify-content: center;
   background-color: #ffa500;
-  padding: 1rem 0; }
+  padding: 1rem 0;
+  position: fixed;
+  top: 0;
+  z-index: 9;
+  width: 100%; }
   header .header {
     display: flex;
     justify-content: space-between; }
     header .header .left .title {
       color: #ffffff;
-      margin-right: 2rem; }
+      margin-right: 2rem;
+      text-decoration: none; }
     header .header .left #search-button {
       color: #ffffff;
       background-color: transparent;
@@ -6352,7 +6357,7 @@ footer {
       font-size: 36px; }
 
 .login {
-  min-height: 60vh;
+  min-height: 80vh;
   display: flex;
   padding: 3rem 0;
   display: flex;
@@ -6364,7 +6369,8 @@ footer {
     width: 50%;
     border: 1px solid #808080;
     padding-top: 2rem;
-    padding-bottom: 1rem; }
+    padding-bottom: 1rem;
+    min-width: 500px; }
     .login .login-box button {
       width: 300px;
       background-color: #ffffff;
@@ -6404,6 +6410,25 @@ footer {
         border: none;
         color: #ffffff; }
 
+#sidebar {
+  height: 100%;
+  width: 160px;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 20px; }
+  #sidebar a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block; }
+
 .container {
   width: 100%;
   max-width: 1280px; }
+
+.body-container {
+  margin-right: auto;
+  margin-left: auto;
+  width: 100%;
+  margin-top: 4rem; }
