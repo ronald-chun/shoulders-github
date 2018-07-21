@@ -14,14 +14,17 @@ block content
             button#login-twitter
                 i.fa.fa-twitter
                 span Twitter
-            hr
+            div#or-container
+                hr.or-hr
+                div#or OR
             div.email-container
-                label Email:
-                br
-                input(type='email', placeholder='you@example.org')#login-email
-                label Password:
-                br
-                input(type='password', placeholder='******')#login-password
-
+                form(action='#')
+                    label Email:
+                    br
+                    input(type='email', placeholder='you@example.org')#login-email
+                    label Password:
+                    br
+                    input(type='password', placeholder='******')#login-password
+                    button(type='submit')#login-button Login
 
 

@@ -6378,13 +6378,31 @@ footer {
       color: #3b5998; }
     .login .login-box #login-twitter i {
       color: #55acee; }
-    .login .login-box hr {
+    .login .login-box #or-container {
+      text-align: center;
       width: 80%; }
+      .login .login-box #or-container .or-hr {
+        margin-bottom: 0;
+        position: relative;
+        top: 22px;
+        height: 0;
+        border: 0;
+        border-top: 1px solid #DCDCDC; }
+      .login .login-box #or-container #or {
+        display: inline-block;
+        position: relative;
+        padding: 10px;
+        background-color: #ffffff;
+        color: #808080; }
     .login .login-box .email-container {
-      min-width: 300px; }
+      width: 300px; }
       .login .login-box .email-container input {
         width: 100%;
         margin-bottom: 1rem; }
+      .login .login-box .email-container #login-button {
+        background-color: #ffa500;
+        border: none;
+        color: #ffffff; }
 
 .container {
   width: 100%;

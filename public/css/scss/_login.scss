@@ -43,16 +43,41 @@
 			}
 		}
 
-		hr {
+		#or-container {
+			text-align: center;
 			width: 80%;
+
+			.or-hr {
+				margin-bottom: 0;
+				position: relative;
+				top: 22px;
+				height: 0;
+				border: 0;
+				border-top: 1px solid $gainsboro;
+			}
+
+			#or {
+				display: inline-block;
+				position: relative;
+				padding: 10px;
+				background-color: $white;
+				color: $grey;
+			}
 		}
 
 		.email-container {
-			min-width: 300px;
+			width: 300px;
+
 
 			input {
 				width: 100%;
 				margin-bottom: 1rem;
+			}
+
+			#login-button {
+				background-color: $primary;
+				border: none;
+				color: $white;
 			}
 		}
 	}
