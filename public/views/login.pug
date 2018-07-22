@@ -3,7 +3,7 @@ extends ./_layout.pug
 append css
 
 block content
-    div.container.login
+    div.login
         div.login-box
             button#login-google
                 i.fa.fa-google
@@ -14,15 +14,18 @@ block content
             button#login-twitter
                 i.fa.fa-twitter
                 span Twitter
-            hr
-            form.email-container
-                hidden(name="_csrf")
-                label Email:
-                br
-                input(type='email', placeholder='you@example.org',name="username")#login-email
-                label Password:
-                br
-                input(type='password', placeholder='******',name="password")#login-password
-
+            div#or-container
+                hr.or-hr
+                div#or OR
+            div.email-container
+                form(action='/login',method='post')
+                    input(type="hidden",name='_csrf',value=csrfToken) 
+                    label Email:
+                    br
+                    input(type='email', placeholder='you@example.org',name="username")#login-email
+                    label Password:
+                    br
+                    input(type='password', placeholder='******',name="password")#login-password
+                    button(type='submit')#login-button Login
 
 

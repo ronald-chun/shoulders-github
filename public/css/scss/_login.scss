@@ -1,5 +1,6 @@
 .login {
-	min-height: 60vh;
+	//margin-top: 3rem;
+	min-height: 80vh;
 	display: flex;
 	padding: 3rem 0;
 	display: flex;
@@ -13,6 +14,7 @@
 		border: 1px solid $grey;
 		padding-top: 2rem;
 		padding-bottom: 1rem;
+		min-width: 400px;
 
 
 		button {
@@ -43,16 +45,41 @@
 			}
 		}
 
-		hr {
+		#or-container {
+			text-align: center;
 			width: 80%;
+
+			.or-hr {
+				margin-bottom: 0;
+				position: relative;
+				top: 22px;
+				height: 0;
+				border: 0;
+				border-top: 1px solid $gainsboro;
+			}
+
+			#or {
+				display: inline-block;
+				position: relative;
+				padding: 10px;
+				background-color: $white;
+				color: $grey;
+			}
 		}
 
 		.email-container {
-			min-width: 300px;
+			width: 300px;
+
 
 			input {
 				width: 100%;
 				margin-bottom: 1rem;
+			}
+
+			#login-button {
+				background-color: $primary;
+				border: none;
+				color: $white;
 			}
 		}
 	}

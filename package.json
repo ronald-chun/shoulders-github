@@ -41,6 +41,7 @@
     "passport-google": "^0.3.0",
     "passport-local": "^1.0.0",
     "pug": "^2.0.3",
+    "req-flash": "0.0.3",
     "request-context": "^2.0.0",
     "sanitize-html": "^1.18.2",
     "serve-favicon": "^2.5.0"

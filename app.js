@@ -12,6 +12,8 @@ const favicon = require('serve-favicon');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const cookieSession = require('cookie-session');
+const flash = require('req-flash');
+
 const helmet = require('helmet');
 const logger = require('morgan');
 const contextService = require('request-context');
@@ -112,7 +114,7 @@ app.use(bodyParser.urlencoded({
 	extended: true,
 	parameterLimit: '10000'
 }));
-
+app.use(flash());
 // basic routing
 app.use(timeout(30000));
 app.use(function(req, res, next) {
@@ -252,6 +254,10 @@ defaultMenu.sort((a, b) => a.last > b.last)
 
 app.get('/', (req, res) => {
 	res.render('index');
+});
+
+app.get('/login', (req, res) => {
+	res.render('login');
 });
 
 app.get('/category/:categroy', (req, res) => {

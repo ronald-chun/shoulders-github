@@ -10,7 +10,7 @@ html(lang='zxx')
         meta(name='viewport', content='width=device-width, initial-scale=1')
         //- favicon
         link(rel='apple-touch-icon', href='apple-touch-icon.png.html')
-        link(rel='shortcut icon', type='image/x-icon', href='images/fav.png')
+        //link(rel='shortcut icon', type='image/x-icon', href='images/fav.png')
 
         block css
             link(rel='stylesheet', href='assets/css/font-awesome.min.css')
@@ -20,15 +20,20 @@ html(lang='zxx')
     body
         header
             div.container.header
-                div.left
-                    span.title Sholuders
-                    input(placeholder='Search...')#serach-bar
-                    button#search-button.btn
-                        i.fa.fa-search
+                div.left.row
+                    div.col-sm-12.col-md-3
+                        a(href='/').title Sholuders
+                    div.col-sm-12.col-md-9
+                        input(placeholder='Search...')#serach-bar
+                        button#search-button.btn
+                            i.fa.fa-search
                 div.right
-                    button#log-in.btn Log in
+                    a(href='/login')#log-in.btn Log in
                     button#sign-up.btn Sign Up
-        block content
+
+        div.body-container
+            block content
+
         footer
             div.container.footer
                 div.row

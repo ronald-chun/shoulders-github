@@ -11,8 +11,19 @@
 @import "header";
 @import "footer";
 @import "login";
+@import "sidebar";
 
 .container {
 	width: 100%;
 	max-width: 1280px;
 }
+
+.body-container {
+	margin-right: auto;
+	margin-left: auto;
+	width: 100%;
+	//max-width: 1280px;
+	margin-top: 4rem;
+}
+
+
