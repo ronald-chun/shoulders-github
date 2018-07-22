@@ -20,11 +20,13 @@ html(lang='zxx')
     body
         header
             div.container.header
-                div.left
-                    a(href='/').title Sholuders
-                    input(placeholder='Search...')#serach-bar
-                    button#search-button.btn
-                        i.fa.fa-search
+                div.left.row
+                    div.col-sm-12.col-md-3
+                        a(href='/').title Sholuders
+                    div.col-sm-12.col-md-9
+                        input(placeholder='Search...')#serach-bar
+                        button#search-button.btn
+                            i.fa.fa-search
                 div.right
                     a(href='/login')#log-in.btn Log in
                     button#sign-up.btn Sign Up

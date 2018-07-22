@@ -6322,6 +6322,9 @@ header {
   header .header {
     display: flex;
     justify-content: space-between; }
+    header .header .left div {
+      display: flex;
+      align-items: center; }
     header .header .left .title {
       color: #ffffff;
       margin-right: 2rem;
