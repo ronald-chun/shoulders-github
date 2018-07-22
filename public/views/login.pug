@@ -15,13 +15,14 @@ block content
                 i.fa.fa-twitter
                 span Twitter
             hr
-            div.email-container
+            form.email-container
+                hidden(name="_csrf")
                 label Email:
                 br
-                input(type='email', placeholder='you@example.org')#login-email
+                input(type='email', placeholder='you@example.org',name="username")#login-email
                 label Password:
                 br
-                input(type='password', placeholder='******')#login-password
+                input(type='password', placeholder='******',name="password")#login-password
 
 
 

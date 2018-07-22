@@ -5,9 +5,11 @@ const GoogleStrategy = require('passport-google').Strategy;
 const User = require('../database/index').User
 passport.use(new LocalStrategy((username, password, done) => {
 	User.getAuthenticated(username, password, function(err, user, reason) {
+		console.log(user)
 		if (err) done(err);
 		// login was successful if we have a user
 		if (user) {
+			console.log(user)
 			// handle login success
 			return done(null, user);
 		}
@@ -30,7 +32,7 @@ passport.use(new LocalStrategy((username, password, done) => {
 	});
 }));
 passport.serializeUser((user, done) => {
-	done(null, user.id);
+	done(null, user._id);
 });
 passport.deserializeUser((id, done) => {
 	//const filter = users.filter((u => u.username === user.username));

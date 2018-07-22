@@ -158,6 +158,10 @@ app.use(function(err, req, res, next) {
 	}
 // handle CSRF token errors here 
 })
+app.use(function(req, res, next) {
+	res.locals.csrfToken = req.csrfToken()
+	next()
+})
 // XSS
 app.use(function(req, res, next) {
 	if (HTMLfilter(req.body) instanceof Error) {
@@ -203,9 +207,9 @@ let defaultMenu = [];
 const nomarlPage = ["/home"]
 
 app.use((req, res, next) => {
+	console.log(req.url)
 	// authorize
 	res.locals.title = process.env.TITLE;
-	res.locals.subtitle = process.env.SUBTITLE;
 	res.locals.pageTitle = defaultMenu.find(_d => `/${_d.name}` === req.url) ? defaultMenu.find(_d => `/${_d.name}` === req.url).display : ""
 	if (req.user) {
 		res.locals.username = req.user.username;

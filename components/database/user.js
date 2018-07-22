@@ -94,6 +94,7 @@ var reasons = UserSchema.statics.failedLogin = {
 };
 
 UserSchema.statics.getAuthenticated = function(username, password, callback) {
+	console.log(username)
 	this.findOne({
 		username: username
 	}, function(err, user) {
@@ -145,4 +146,4 @@ UserSchema.statics.getAuthenticated = function(username, password, callback) {
 	});
 };
 
-module.exports = mongoose.model('User', UserSchema);
+module.exports = mongoose.model('user', UserSchema);
