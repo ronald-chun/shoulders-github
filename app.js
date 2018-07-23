@@ -229,17 +229,8 @@ app.use((req, res, next) => {
 });
 
 // initialize modules
-if (process.env.PREINIT)
-	process.env.PREINIT.split(",").forEach(_md => {
-		var obj = require(`./components/${_md}`);
-		if (obj.menu)
-			defaultMenu = defaultMenu.concat(obj.menu)
-		if (obj.router) app.use(`/${obj.name || ""}`, obj.router);
-		console.log('router initialize ' + _md);
-	})
 
 dirs('./components/').forEach(_md => {
-	if (!process.env.PREINIT || !process.env.PREINIT.includes(_md)) {
 		var obj = require(`./components/${_md}`);
 		if (obj.router) {
 			app.use(`/${obj.name || ""}`, obj.router);
@@ -247,17 +238,13 @@ dirs('./components/').forEach(_md => {
 		}
 		if (obj.menu)
 			defaultMenu = defaultMenu.concat(obj.menu)
-	}
+	
 })
 
 defaultMenu.sort((a, b) => a.last > b.last)
 
 app.get('/', (req, res) => {
 	res.render('index');
-});
-
-app.get('/login', (req, res) => {
-	res.render('login');
 });
 
 app.get('/category/:categroy', (req, res) => {
