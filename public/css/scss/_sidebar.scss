@@ -1,9 +1,9 @@
-$color_woodsmoke_approx: #111;
+$color_woodsmoke_approx: rgb(250, 250, 250);
 $color_gray_approx: #818181;
 
 #sidebar{
 	height: 100%;
-	width: 160px;
+	width: 164px;
 	//position: fixed;
 	//z-index: 1;
 	//top: 0;
@@ -14,7 +14,7 @@ $color_gray_approx: #818181;
 	a {
 		padding: 6px 8px 6px 16px;
 		text-decoration: none;
-		font-size: 25px;
+		font-size: 100%;
 		color: $color_gray_approx;
 		display: block;
 	}
