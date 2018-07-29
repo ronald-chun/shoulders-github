@@ -1,0 +1,33 @@
+extends ./_layout.pug
+
+append css
+    
+
+block content
+    div.login
+        div.login-box
+            //- button#login-google
+            //-     i.fa.fa-google
+            //-     span Google
+            //- button#login-facebook
+            //-     i.fa.fa-facebook
+            //-     span Facebook
+            //- button#login-twitter
+            //-     i.fa.fa-twitter
+            //-     span Twitter
+            //- div#or-container
+            //-     hr.or-hr
+            //-     div#or OR
+            div.email-container
+                form(action='/login',method='post')
+                    input(type="hidden",name='_csrf',value=csrfToken) 
+                    label Email:
+                    br
+                    input(type='email', placeholder='you@example.org',name="username")#login-email
+                    label Password:
+                    br
+                    input(type='password', placeholder='******',name="password")#login-password
+                    br
+                    label Confirm Password:
+                    input(type='password',placeholder='******',name="conf-password")#login-password
+                    button(type='submit')#login-button Signup

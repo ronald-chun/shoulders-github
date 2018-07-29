@@ -247,6 +247,10 @@ app.get('/', (req, res) => {
 	res.render('index');
 });
 
+app.get('/signup',(req, res)=>{
+	res.render('signup')
+}) ;
+
 app.get('/category/:categroy', (req, res) => {
 	res.locals.current_menu_item = "category";
 });
