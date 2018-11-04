@@ -19,7 +19,7 @@ block content
             //-     hr.or-hr
             //-     div#or OR
             div.email-container
-                form(action='/login',method='post')
+                form(action='/signup',method='post')
                     input(type="hidden",name='_csrf',value=csrfToken) 
                     label Email:
                     br
@@ -29,5 +29,5 @@ block content
                     input(type='password', placeholder='******',name="password")#login-password
                     br
                     label Confirm Password:
-                    input(type='password',placeholder='******',name="conf-password")#login-password
+                    input(type='password',placeholder='******',name="conf_password")#login-password
                     button(type='submit')#login-button Signup
